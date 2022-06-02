@@ -3,5 +3,7 @@ export interface Unit {
     importe: number;
     desc: string;
     subtotal: string;
+    clave: string;
+    cc: string;
     /* noparte: string; */
 }

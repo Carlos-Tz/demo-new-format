@@ -1,0 +1,14 @@
+.card-body {
+    padding: 2rem;
+}
+
+input {
+    height: 3rem !important;
+    font-size: 1.1rem !important;
+}
+
+.btn {
+    width: 100%;
+    margin-bottom: .5rem;
+    color: black;
+}

@@ -7,15 +7,16 @@
         <div class="inner">
           <div class="row">
             <div class="col s4">
-              <img src="assets/logo1.jpg" alt="" style="width: 100%;">
+              <img src="assets/logo_rivera.png" alt="" style="width: 100%;">
             </div>
             <div class="col s4">
               <div class="datos">
-                <h5 style="font-weight: 600;">AFINAUTO</h5>
-                <p>PERFORMANCE - SUSPENSIONES</p>
-                <p>Tel. 443 256 5230 | 443 104 0686</p>
-                <p>Raza Azteca 89-A, Lomas de Santiaguito</p>
-                <p>afinautos@yahoo.com</p>
+                <p style="font-weight: 600; margin-top: 0 !important; font-size: 1rem;">Ing. Rubén Rivera Hernández</p>
+                <p>RFC: RIHR 791111 HK3</p>
+                <p>Rio Amatlán 540 Col. Ventura Puente</p>
+                <p>Morelia, Mich.</p>
+                <p>Nextel: 443 357 0589 ID: 42*621508*2</p>
+                <p>Cel. 443 217 9230</p>
               </div>
             </div>
             <div class="col s4">
@@ -23,11 +24,6 @@
                   <h6 class="center-align" style="margin: 0 !important;"><b>ORDEN DE REPARACIÓN</b></h6>
                   <input type="text" id="orden" tabindex="0" placeholder="**" formControlName="orden" class="orden" readonly>
               </div>
-              <!-- <div>
-                <p class="right-align" style="margin: 0 !important;"><b>ORDEN DE TRABAJO</b>
-                <input type="number" tabindex="0" class="orden focusNext" placeholder="**" formControlName="orden" min="0" step="1" style="width: 3cm;">
-              </p>
-              </div> -->
             </div>
           </div>
   
@@ -440,299 +436,17 @@
                 </div>
                 <hr>
                 <p>
-                  AFINAUTO
+                  RIVERA MANTENIMIENTO AUTOMOTRIZ
                 </p>
               </div>
             </div>
           </div>
-            <!-- <div class="row valign-wrapper">
-              <div class="col s5">
-                <div class="row valign-wrapper">
-                  <div class="col s2" style="padding-right: 0 !important;">
-                    <img src="https://img.icons8.com/color/96/000000/facebook.png" style="height: 1cm !important;">
-                  </div>
-                  <div class="col s4" style="padding-left: 0 !important;">
-                    ramsa automotriz
-                  </div>
-                  <div class="col s2" style="padding-right: 0 !important;">
-                    <img src="https://img.icons8.com/color/96/000000/whatsapp.png" style="height: 1cm !important;">
-                  </div>
-                  <div class="col s4" style="padding-left: 0 !important;">
-                    443 528 1223
-                  </div>
-                </div>                
-              </div>
-              <div class="col s4 center-align">
-                <p>Cel. 443 528 1223</p>
-              </div>
-              <div class="col s3 center-align">
-                <p>ramsaautomotriz7827@gmail.com</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12 center-align">
-                <b>Baja California Norte #119c Col. Issac Arriaga</b>
-              </div>
-            </div> -->
           </div>
           
   
         </div>
       </div>
     </section>
-
-    <!-- <section>
-      <div class="page">
-        <div class="inner">
-          <div class="row">
-            <div class="col s3">
-              <img src="assets/logo.jpg" alt="" class="responsive-img" style="padding-right: 7mm;">
-            </div>
-            <div class="col s5 offset-s4">
-                <div>
-                <h5 class="center-align" style="margin: 0 !important;"><b>ORDEN DE REPARACIÓN</b></h5>
-                <p class="orden">{{ this.myForm.value.orden }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="row" style="margin-top: 1rem !important;">
-            <div class="col s12">
-              <table class="tt1" formArrayName="units">
-                <tr>
-                  <th style="width: 1.5cm;">CANT.</th>
-                  <th style="width: 2.5cm;">NO. DE PARTE</th>
-                  <th style="width: 10.5cm;">OPERACIONES A EFECTUAR Y ELEMENTOS A REPARAR</th>
-                  <th style="width: 2.5cm;">PRECIO</th>
-                  <th>IMPORTE</th>
-                </tr>
-                <tr [formGroupName]="0">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="13" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="14" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="15" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="16" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="1">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="17" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="18" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="19" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="20" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="2">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="21" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="22" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="23" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="24" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="3">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="25" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="26" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="27" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="28" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="4">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="29" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="30" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="31" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="32" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="5">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="33" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="34" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="35" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="36" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="6">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="37" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="38" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="39" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="40" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="7">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="41" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="42" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="43" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="44" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="8">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="45" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="46" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="47" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="48" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="9">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="49" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="50" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="51" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="52" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="10">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="53" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="54" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="55" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="56" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="11">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="57" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="58" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="59" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="60" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="12">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="61" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="62" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="63" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="64" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="13">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="65" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="66" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="67" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="68" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="14">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="69" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="70" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="71" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="72" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="15">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="73" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="74" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="75" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="76" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-                <tr [formGroupName]="16" style="border: 1px solid #9e9e9e;">
-                  <td><input type="number" min="0" formControlName="cantidad" tabindex="77" class="focusNext"></td>
-                  <td><input type="text" formControlName="noparte" tabindex="78" class="focusNext"></td>
-                  <td><input type="text" formControlName="desc" tabindex="79" class="focusNext"></td>
-                  <td><input type="number" formControlName="importe" tabindex="80" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
-                </tr>
-              </table>
-              <table id="total__">
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">REFACCIONES: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" value="{{totalr}}" style="color:#00649c;"></td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">MANO DE OBRA: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" name="obra" formControlName="manoo" (change)="updt()" tabindex="81"
-                    class="focusNext" > </td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">CARGOS ADICIONALES: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" name="obra" formControlName="cargos" (change)="updt()" tabindex="82"
-                    class="focusNext" > </td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">SEGURO: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" name="obra" formControlName="seguro" (change)="updt()" tabindex="83"
-                    class="focusNext" > </td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">OTROS MATERIALES: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" name="otros" formControlName="otrosm" (change)="updt()"
-                    tabindex="84" class="focusNext" > </td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">SUBTOTAL: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" value="{{subtotal}}" style="color:#00649c;"> </td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; color: white;" class="right-align"> IVA: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" value="{{ iva}}" style="color:#00649c;"></td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; color: white;" class="right-align">TOTAL: $</td>
-                  <td style="border: 1px solid #9e9e9e; font-weight: 600; color: red;"><input type="number" value="{{total}}" style="color:red;"></td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">ANTICIPO: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" name="anticipo" formControlName="antici" (change)="updt()"
-                    tabindex="85" class="focusNext" > </td>
-                </tr>
-                <tr style="border-bottom: 0;">
-                  <td style="width: 1.5cm;"></td>
-                  <td style="width: 11.5cm;"></td>
-                  <td style="background-color: #9e9e9e; width: 4cm; color: white;" class="right-align">SALDO: $</td>
-                  <td style="border: 1px solid #9e9e9e;"><input type="number" value="{{saldo}}" style="color:red;"> </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          
-
-          
-          
-          <div class="foot_">
-          
-          <div class="row valign-wrapper">
-            <div class="col s5">
-              <div class="row valign-wrapper">
-                <div class="col s2" style="padding-right: 0 !important;">
-                  <img src="https://img.icons8.com/color/96/000000/facebook.png" style="height: 1cm !important;">
-                </div>
-                <div class="col s4" style="padding-left: 0 !important;">
-                  ramsa automotriz
-                </div>
-                <div class="col s2" style="padding-right: 0 !important;">
-                  <img src="https://img.icons8.com/color/96/000000/whatsapp.png" style="height: 1cm !important;">
-                </div>
-                <div class="col s4" style="padding-left: 0 !important;">
-                    443 528 1223
-                </div>
-              </div>                
-            </div>
-            <div class="col s4 center-align">
-              <p>Cel. 443 528 1223</p>
-            </div>
-            <div class="col s3 center-align">
-              <p>ramsaautomotriz7827@gmail.com</p>
-            </div>
-          </div> 
-         <div class="row">
-            <div class="col s12 center-align">
-              <b>Baja California Norte #119c Col. Issac Arriaga</b>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
 
     <section>
       <div class="page">
@@ -784,7 +498,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <!-- <section>
       <div class="page">
         <div class="inner">
           <div class="section6">
@@ -797,7 +511,6 @@
               <div class="tr">
                 <div class="td">
                     <div class="image-container" id="ci5" [ngStyle]="{'background-image': 'url('+myForm.value.img5+')'}">
-                      <!-- <span class="material-icons">backup</span> -->
                         <input type="file" accept="image/*" name="img5" onchange="showMyImage(this)" (change)="changeListener($event)">
                       </div>
                 </div>
@@ -833,7 +546,7 @@
     
         </div>
       </div>
-    </section>
+    </section> -->
 
 
     <section>
@@ -841,7 +554,7 @@
         <div class="inner">
           <div class="row">
             <div class="col s4">
-              <img src="assets/logo1.jpg" alt="" style="width: 100%;">
+              <img src="assets/logo_rivera.png" alt="" style="width: 100%;">
             </div>
             <div class="col s6"></div>
             <div class="col s2" style="font-size: 1.3em; text-align: right;">{{ this.myForm.value.fecha }} </div>
@@ -887,39 +600,10 @@
                       <!-- <img src="" id="imgSign4"> -->
                     </div>
                     <hr>
-                    AFINAUTO             
+                    RIVERA MANTENIMIENTO AUTOMOTRIZ      
                   </div>
                 </div>
               </div>
-              <!-- <div class="row valign-wrapper">
-                <div class="col s5">
-                  <div class="row valign-wrapper">
-                    <div class="col s2" style="padding-right: 0 !important;">
-                      <img src="https://img.icons8.com/color/96/000000/facebook.png" style="height: 1cm !important;">
-                    </div>
-                    <div class="col s4" style="padding-left: 0 !important;">
-                      ramsa automotriz
-                    </div>
-                    <div class="col s2" style="padding-right: 0 !important;">
-                      <img src="https://img.icons8.com/color/96/000000/whatsapp.png" style="height: 1cm !important;">
-                    </div>
-                    <div class="col s4" style="padding-left: 0 !important;">
-                        443 528 1223
-                    </div>
-                  </div>                
-                </div>
-                <div class="col s4 center-align">
-                  <p>Cel. 443 528 1223</p>
-                </div>
-                <div class="col s3 center-align">
-                  <p>ramsaautomotriz7827@gmail.com</p>
-                </div>
-              </div> 
-             <div class="row">
-                <div class="col s12 center-align">
-                  <b>Baja California Norte #119c Col. Issac Arriaga</b>
-                </div>
-              </div> -->
             </div>
         </div>
       </div>

@@ -40,6 +40,7 @@ select {
     border-top: 0 !important;
     border-left: 0 !important;
     border-right: 0 !important;
+    height: 1rem !important;
 }
 
   
@@ -80,4 +81,12 @@ select {
 
 .mr0 {
     margin-right: 0 !important;
+}
+
+.select2-container {
+    height: 0.1rem !important;
+    color: red;
+}
+.select2-selection--single .select2-selection__rendered, #select2-nombre-container {
+    color: transparent !important;
 }

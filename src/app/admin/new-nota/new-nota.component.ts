@@ -11,6 +11,9 @@ import { finalize } from 'rxjs/operators';
 import { CurrencyPipe } from '@angular/common';
 import { Form } from 'src/app/models/form';
 import {NgForm} from '@angular/forms';
+import * as jquery from 'jquery';
+import { Select2Data, Select2Module } from 'ng-select2-component';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-new-nota',
@@ -37,6 +40,7 @@ export class NewNotaComponent implements OnInit {
   };
   ord = 0;
   myformValuesChanges$;
+  myformValuesChanges2$;
   total = 0;
   totalr = 0;
   iva = 0;
@@ -91,6 +95,7 @@ export class NewNotaComponent implements OnInit {
   save = 2;
   presu = false;
   forms: Form[];
+  productos: Producto[];
   ff = new Date;
   myForm: FormGroup;
   orden = {
@@ -122,6 +127,14 @@ export class NewNotaComponent implements OnInit {
         this.forms.push(form as Form);
       });
     });
+    this.formApi.GetProductosList().snapshotChanges().subscribe(data => {
+      this.productos = [];
+      data.forEach(item => {
+        const producto = item.payload.toJSON();
+        producto['$key'] = item.key;
+        this.productos.push(producto as Producto);
+      });
+    });
     this.formApi.getLastNota().subscribe(res=> {
       if(res[0]){
         this.ord = Number(res[0].orden);
@@ -130,21 +143,6 @@ export class NewNotaComponent implements OnInit {
         this.myForm.patchValue({orden: String(1).padStart(6, '0')});      
       }
     });
-    /* this.formApi.GetNotasList().snapshotChanges().subscribe(data => {
-      this.ord = data.length + 1;
-      this.myForm.patchValue({orden: String(this.ord).padStart(6, '0')});
-    }); */
-    //this.formApi.GetFormsList();
-    /* this.formApi.GetFormsList().snapshotChanges().subscribe(data => {
-      this.ord = data.length + 1;
-      this.myForm.patchValue({orden: String(this.ord).padStart(6, '0')});
-      this.forms = [];
-      data.forEach(item => {
-        const form = item.payload.toJSON();
-        form['$key'] = item.key;
-        this.forms.push(form as Form);
-      });
-    }); */
     this.fecha = fechaObj.format(new Date(), 'D [/] MM [/] YYYY');
     this.myForm.patchValue({ fecha: this.fecha });
     /* this.myForm.patchValue({ ingreso: new Date() }); */
@@ -155,6 +153,18 @@ export class NewNotaComponent implements OnInit {
     this.myformValuesChanges$.subscribe(units => {
       this.updateTotalUnitPrice(units);
     });
+    /* this.myForm.get('nombre').valueChanges.subscribe(value => this.nameS(value));
+    jquery('.select2').select2();
+    jquery('#nombre').on('change', function(ev) {
+      jquery('#nnombre').val(jquery('#'+this.value+'_n').text());
+      jquery('#ttel').val(jquery('#'+this.value).text());
+      jquery('#ddomicilio').val(jquery('#'+this.value+'_d').text());
+    });
+    jquery('#clave0').on('change', function(ev) {
+      jquery('#cclave0').val(jquery('#'+this.value+'_c').text());
+      jquery('#ddesc0').val(jquery('#'+this.value+'_d').text());
+      jquery('#iimporte0').val(Number(jquery('#'+this.value+'_p').text())).trigger('change');
+    }); */
   }
 
   private generRow() {
@@ -168,15 +178,43 @@ export class NewNotaComponent implements OnInit {
       importe: [''],
       desc: [''],
       subtotal: [''],
-      noparte: ['']
+      clave: [''],
+      cc: ['']
     });
   }
+
+  public c0(){ jquery('#ccantidad0').val(''); jquery('#ssubtotal0').val(''); }
+  public c1(){ jquery('#ccantidad1').val(''); jquery('#ssubtotal1').val(''); }
+  public c2(){ jquery('#ccantidad2').val(''); jquery('#ssubtotal2').val(''); }
+  public c3(){ jquery('#ccantidad3').val(''); jquery('#ssubtotal3').val(''); }
+  public c4(){ jquery('#ccantidad4').val(''); jquery('#ssubtotal4').val(''); }
+  public c5(){ jquery('#ccantidad5').val(''); jquery('#ssubtotal5').val(''); }
+  public c6(){ jquery('#ccantidad6').val(''); jquery('#ssubtotal6').val(''); }
+  public c7(){ jquery('#ccantidad7').val(''); jquery('#ssubtotal7').val(''); }
+  public c8(){ jquery('#ccantidad8').val(''); jquery('#ssubtotal8').val(''); }
+  public c9(){ jquery('#ccantidad9').val(''); jquery('#ssubtotal9').val(''); }
+  public c10(){ jquery('#ccantidad10').val(''); jquery('#ssubtotal10').val(''); }
+  public c11(){ jquery('#ccantidad11').val(''); jquery('#ssubtotal11').val(''); }
+  public c12(){ jquery('#ccantidad12').val(''); jquery('#ssubtotal12').val(''); }
+  public c13(){ jquery('#ccantidad13').val(''); jquery('#ssubtotal13').val(''); }
+  public c14(){ jquery('#ccantidad14').val(''); jquery('#ssubtotal14').val(''); }
+  public c15(){ jquery('#ccantidad15').val(''); jquery('#ssubtotal15').val(''); }
+  public c16(){ jquery('#ccantidad16').val(''); jquery('#ssubtotal16').val(''); }
 
   private updateTotalUnitPrice(units: any) {
     const control = this.myForm.controls['units'] as FormArray;
     this.totalr = 0;
     // tslint:disable-next-line: forin
     for (let i in units) {
+      if(units[i].cc){
+        this.formApi.GetProducto(units[i].cc).valueChanges().subscribe(data => {
+            if (data.precio &&  data.descripcion){
+              control.at(+i).get('clave').setValue(data.clave, {onlySelf: true, emitEvent: false});
+              control.at(+i).get('importe').setValue(data.precio, {onlySelf: true, emitEvent: false});
+              control.at(+i).get('desc').setValue(data.descripcion, {onlySelf: true, emitEvent: false});
+            }
+          });
+      }
       let totalUnitPrice = 0;
       totalUnitPrice = ((units[i].cantidad > 0 && units[i].importe > 0) ? units[i].cantidad * units[i].importe : 0);
      /*  totalUnitPrice += (units[i].cantidad ? units[i].cantidad : 0);
@@ -250,41 +288,6 @@ export class NewNotaComponent implements OnInit {
     this.clear4(); */
     this.myForm.patchValue({fecha: this.fecha});
   }
-  sForm2() {
-    /* this.myForm.patchValue({fecha: this.fecha}); */
-    /* this.myForm.patchValue({tcar: 'sedan'});
-    this.myForm.patchValue({gas: 50});
-    this.myForm.patchValue({dere: []});
-    this.myForm.patchValue({frente: []});
-    this.myForm.patchValue({detras: []});
-    this.myForm.patchValue({izq: []});
-    this.myForm.patchValue({idioma: this.idiomaA});
-    this.air = false;
-    this.eng = false;
-    this.abs = false;
-    this.oil = false;
-    this.bat = false;
-    this.cin = false;
-    this.fre = false;
-    this.lig = false;
-    this.sta = false;
-    this.tem = false;
-    this.tal = false;
-    this.pre = false;
-    this.vol = false;
-    this.lock = false; */
-  }
-
-  /* combus(ev) {
-    this.needleValue = ev.srcElement.value;
-  } */
-
-  /* airbag() {
-    this.air = !this.air;
-    this.myForm.patchValue({bolsa: this.air});
-    //  this.form_.airbag = !this.form_.airbag;
-  } */
-
 
   updt() {
     /* this.subtotal = this.totalRef + this.obra + this.otros; */
@@ -300,17 +303,14 @@ export class NewNotaComponent implements OnInit {
   }
 
   nameS(ev) {
-    /* this.needleValue = ev.srcElement.value; */
     this.formApi.GetForm(ev.srcElement.value).valueChanges().subscribe(data => {
+    /* this.formApi.GetForm(ev).valueChanges().subscribe(data => { */
       if (data.nombre && data.tel && data.domicilio){
         this.myForm.patchValue({domicilio: data.domicilio});
         this.myForm.patchValue({tel: data.tel});
         this.myForm.patchValue({nombre: data.nombre});
         this.nameC = data.nombre;
-        /* console.log(data.email);
-        console.log(data.tel); */
       }
-      /* this.myForm.patchValue(data); */
     });
   }
 

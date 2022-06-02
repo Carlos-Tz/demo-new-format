@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card">
+                <div class="card-body" [formGroup]="myForm">
+                    <p class="card-title h6" style="text-align: center; margin: 1rem; padding: 1rem;">NUEVO PRODUCTO</p>
+                    <div class="input-field col s12">
+                        <input type="text" class="form-control" formControlName="clave" placeholder="Clave*">
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" class="form-control" formControlName="descripcion" placeholder="Descripcion*">
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="number" class="form-control" formControlName="precio" placeholder="Precio*">
+                    </div>
+                    <!-- <div class="input-field col s12">
+                        <input type="number" class="form-control" formControlName="stock" placeholder="Stock*">
+                    </div> -->
+                    <ul class="list-group list-group-flush">
+                        <li>
+                            <button class="waves-effect waves-light btn" type="button" (click)="submitSurveyData()" [routerLink]="['/productos']" [disabled]="!myForm.valid">Guardar</button>
+                        </li>
+                        <li>
+                            <button class="waves-effect waves-light btn grey lighten-2" type="button" [routerLink]="['/productos']">Cancelar</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

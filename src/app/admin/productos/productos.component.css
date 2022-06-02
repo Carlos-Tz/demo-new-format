@@ -1,0 +1,37 @@
+
+@media (max-width: 520px) {
+    .show-h {
+      display: none;
+    }
+    /* .pad-l {
+        padding-left: 24px;
+    } */
+  }
+  @media (max-width: 993px) {
+    .show-hh {
+      display: none;
+    }
+    /* .pad-ll {
+        padding-left: 24px;
+    } */
+  }
+  
+  input:not(.browser-deafult) {
+    border-bottom: 0 !important;
+  }
+  
+  input:not(.browser-deafult):focus:not([readonly]){
+    border-bottom: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .btn-small {
+    height: 25px;
+    width: 32px;
+    padding: 0;
+  }

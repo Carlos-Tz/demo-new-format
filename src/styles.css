@@ -198,6 +198,10 @@ body {
   .datos p {
     font-size: 0.7rem !important;
   }
+
+  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    display: none !important;
+  }
 }
 
 #printBtn {
@@ -647,4 +651,23 @@ mat-header-cell:last-of-type, mat-cell:last-of-type {
   .container{
     width: 90% !important;
   }
+}
+
+.select2-selection--single  {
+  border-radius: 0 !important;
+  /*border-bottom: 1px solid #aaa !important;*/
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  height: 18px !important;
+}
+.select2-selection--single .select2-selection__rendered {
+  line-height: 18px !important;
+}
+.select2-selection--single .select2-selection__arrow {
+  height: 17px !important;
+}
+
+.select2-search__field {
+  height: 1.4rem !important;
 }

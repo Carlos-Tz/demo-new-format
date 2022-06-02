@@ -15,6 +15,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { Angular2SignaturepadModule } from 'angular2-signaturepad';
 import { GaugeChartModule } from 'angular-gauge-chart';
 import { CurrencyPipe } from '@angular/common';
+//import { NgSelect2Module } from 'ng-select2';
+import { Select2Module } from "ng-select2-component";
 
 
 import { AngularFireModule } from '@angular/fire';
@@ -61,6 +63,9 @@ import { NewNotaComponent } from './admin/new-nota/new-nota.component';
 import { NewOrdenComponent } from './admin/new-orden/new-orden.component';
 import { EditOrdenComponent } from './admin/edit-orden/edit-orden.component';
 import { EditNotaComponent } from './admin/edit-nota/edit-nota.component';
+import { ProductosComponent } from './admin/productos/productos.component';
+import { NewProductoComponent } from './admin/new-producto/new-producto.component';
+import { EditProductoComponent } from './admin/edit-producto/edit-producto.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -97,7 +102,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     NewNotaComponent,
     NewOrdenComponent,
     EditOrdenComponent,
-    EditNotaComponent
+    EditNotaComponent,
+    ProductosComponent,
+    NewProductoComponent,
+    EditProductoComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +134,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    Select2Module,
+    //NgSelect2Module
   ],
   providers: [CurrencyPipe],
   bootstrap: [AppComponent]

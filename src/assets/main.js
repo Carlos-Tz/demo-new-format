@@ -164,3 +164,7 @@ document.addEventListener('keypress', function(evt) {
       event.preventDefault();
     }
   });
+
+// $(document).ready(function() {
+ //   $('.select2').select2(); 
+//}); */

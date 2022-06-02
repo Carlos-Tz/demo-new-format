@@ -431,13 +431,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     this.myForm.patchValue({izq: this.signaturePad4.toData()});
   }
   clear1() {
-    this.signaturePad.off();
-    /* this.signaturePad.clear(); */
+    //this.signaturePad.off();
+    this.signaturePad.clear();
     this.myForm.patchValue({dere: []});
   }
 
   clear2() {
-    this.signaturePad.on();
+    //this.signaturePad.on();
     this.signaturePad2.clear();
     this.myForm.patchValue({frente: []});
   }
@@ -482,7 +482,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI1);
           ref.delete();
         }
-        this.filePathI1 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI1 = `images_rivera/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI1);
         this.storage.upload(this.filePathI1, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -498,7 +498,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
             const ref = this.storage.ref(this.filePathI2);
             ref.delete();
           }
-          this.filePathI2 = `images_afinauto/image_${Date.now()}`;
+          this.filePathI2 = `images_rivera/image_${Date.now()}`;
           const fileRef = this.storage.ref(this.filePathI2);
           this.storage.upload(this.filePathI2, this.uploadedImage).snapshotChanges().pipe(
             finalize(() => {
@@ -514,7 +514,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI3);
           ref.delete();
         }
-        this.filePathI3 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI3 = `images_rivera/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI3);
         this.storage.upload(this.filePathI3, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -530,7 +530,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI4);
           ref.delete();
         }
-        this.filePathI4 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI4 = `images_rivera/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI4);
         this.storage.upload(this.filePathI4, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -546,7 +546,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI5);
           ref.delete();
         }
-        this.filePathI5 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI5 = `images_rivera/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI5);
         this.storage.upload(this.filePathI5, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -562,7 +562,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI6);
           ref.delete();
         }
-        this.filePathI6 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI6 = `images_rivera/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI6);
         this.storage.upload(this.filePathI6, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -578,7 +578,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI7);
           ref.delete();
         }
-        this.filePathI7 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI7 = `images_rivera/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI7);
         this.storage.upload(this.filePathI7, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -594,7 +594,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI8);
           ref.delete();
         }
-        this.filePathI8 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI8 = `images_rivera/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI8);
         this.storage.upload(this.filePathI8, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -617,7 +617,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
       /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf1 = `signs_afinauto/image_${Date.now()}`;
+      this.filePathf1 = `signs_rivera/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf1);
       this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
         finalize(() => {
@@ -637,7 +637,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
       /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf2 = `signs_afinauto/image_${Date.now()}`;
+      this.filePathf2 = `signs_rivera/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf2);
       this.storage.upload(this.filePathf2, blob).snapshotChanges().pipe(
         finalize(() => {
@@ -657,7 +657,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
       /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf3 = `signs_afinauto/image_${Date.now()}`;
+      this.filePathf3 = `signs_rivera/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf3);
       this.storage.upload(this.filePathf3, blob).snapshotChanges().pipe(
         finalize(() => {
@@ -677,7 +677,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
       /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf4 = `signs_afinauto/image_${Date.now()}`;
+      this.filePathf4 = `signs_rivera/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf4);
       this.storage.upload(this.filePathf4, blob).snapshotChanges().pipe(
         finalize(() => {

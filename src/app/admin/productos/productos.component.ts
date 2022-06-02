@@ -1,54 +1,49 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { Form } from 'src/app/models/form';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatInput } from '@angular/material/input';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { NewRegisterComponent } from '../new-register/new-register.component';
-import { EditRegisterComponent } from '../edit-register/edit-register.component';
-import { Orden } from 'src/app/models/orden';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
-  selector: 'app-ordenes',
-  templateUrl: './ordenes.component.html',
-  styleUrls: ['./ordenes.component.css']
+  selector: 'app-productos',
+  templateUrl: './productos.component.html',
+  styleUrls: ['./productos.component.css']
 })
-export class OrdenesComponent implements OnInit, AfterViewInit {
-  public dataSource = new MatTableDataSource<Orden>();
+export class ProductosComponent implements OnInit, AfterViewInit {
+  public dataSource = new MatTableDataSource<Producto>();
   save = 2;
-  Orden: Orden[];
+  Producto: Producto[];
   data = false;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild('input', {static: false}) input: ElementRef;
 
   displayedColumns: any[] = [
-    'orden',
-    'nombre',
-    'modelo',
-    'placas',
+    'clave',
+    'descripcion',
+    'precio',
+    //'stock',
     'fecha',
     'action'
   ];
   constructor(
-    private storage: AngularFireStorage,
-    public api: ApiService, private matDialog: MatDialog,
+    public api: ApiService, private matDialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.api.GetOrdenesList().snapshotChanges().subscribe(data => {
-      this.Orden = [];
+    this.api.GetProductosList().snapshotChanges().subscribe(data => {
+      this.Producto = [];
       data.forEach(item => {
         const f = item.payload.toJSON();
         f['$key'] = item.key;
-        this.Orden.push(f as Orden);
+        this.Producto.push(f as Producto);
       });
-      if (this.Orden.length > 0) {
+      if (this.Producto.length > 0) {
         this.data = true;
-        this.dataSource.data = this.Orden.slice();
+        this.dataSource.data = this.Producto.slice();
        /*  this.dataSource.sort = this.sort; */
       }
       /* Pagination */
@@ -57,11 +52,10 @@ export class OrdenesComponent implements OnInit, AfterViewInit {
       }, 0);
     });
     //this.api.GetCita();
-    this.api.getLastOrden();
   }
 
   sortData(sort: Sort) {
-    const data = this.Orden.slice();
+    const data = this.Producto.slice();
     if (!sort.active || sort.direction === '') {
       this.dataSource.data = data;
       return;
@@ -70,8 +64,7 @@ export class OrdenesComponent implements OnInit, AfterViewInit {
     this.dataSource.data = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'orden': return this.compare(a.orden, b.orden, isAsc);
-        case 'nombre': return this.compare(a.nombre.trim().toLocaleLowerCase(), b.nombre.trim().toLocaleLowerCase(), isAsc);
+        case 'clave': return this.compare(a.clave.trim().toLocaleLowerCase(), b.clave.trim().toLocaleLowerCase(), isAsc);
         case 'fecha': return this.compare(a.fecha, b.fecha, isAsc);
         default: return 0;
       }
@@ -83,18 +76,11 @@ export class OrdenesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    /* this.dataSource.sort = this.sort; */
+    this.dataSource.sort = this.sort;
   }
 
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
-  }
-
-  deleteOrden(key: string){
-    if (window.confirm('¿Esta seguro de eliminar el registro seleccionado?')) {
-      this.api.DeleteOrden(key);
-      //this.storage.ref('images_rivera/image_1653345954389').delete();
-    }
   }
 
   /* openDialog() {
@@ -120,5 +106,11 @@ export class OrdenesComponent implements OnInit, AfterViewInit {
       console.log(`Dialog sent: ${value}`); 
     });
   } */
+
+  deleteProducto(key: string){
+    if (window.confirm('¿Esta seguro de eliminar el registro seleccionado?')) {
+      this.api.DeleteProducto(key);
+    }
+  }
 
 }

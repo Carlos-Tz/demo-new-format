@@ -17,17 +17,18 @@
         <div class="inner">
           <div class="row">
             <div class="col s4">
-              <img src="assets/logo1.jpg" alt="" style="width: 100%;">
+              <img src="assets/logo_rivera.png" alt="" style="width: 100%;">
             </div>
             <div class="col s4">
               <div class="datos">
                 <h6 *ngIf="!myForm.value.presupuesto" style="font-weight: 600; margin: 0;">NOTA DE VENTA</h6>
                 <h6 *ngIf="myForm.value.presupuesto" style="font-weight: 600; margin: 0;">PRESUPUESTO</h6>
-                <p style="font-size: 1rem; font-weight:600; ">AFINAUTO</p>
-                <p>PERFORMANCE - SUSPENSIONES</p>
-                <p>Tel. 443 256 5230 | 443 104 0686</p>
-                <p>Raza Azteca 89-A, Lomas de Santiaguito</p>
-                <p>afinautos@yahoo.com</p>
+                <p style="font-weight: 600; margin-top: 0 !important; font-size: 1rem;">Ing. Rubén Rivera Hernández</p>
+                <p>RFC: RIHR 791111 HK3</p>
+                <p>Rio Amatlán 540 Col. Ventura Puente</p>
+                <p>Morelia, Mich.</p>
+                <p>Nextel: 443 357 0589 ID: 42*621508*2</p>
+                <p>Cel. 443 217 9230</p>
               </div>
             </div>
             <div class="col s4" style="font-size: 0.7rem; font-weight: 600;">
@@ -65,10 +66,22 @@
                 </div>
                 <div class="col s6 pr0" style="display: none;" id="nameC">
                   <input type="text" value="{{nameC}}">
+                  <!-- <input type="text" id="nnombre" formControlName="nombre"> -->
                 </div>
                 <div class="col s5 pr0 no-print">
                   <input formControlName="nombre" type="text" readonly>
                 </div>
+                <!-- <div class="col s6 pr0" style="line-height: 0 !important;">
+                  <select class="form-control select2 select2-hidden-accessible  no-print" name="nombre" id="nombre" style="width: 100%;" tabindex="-1" aria-hidden="true" (change)="nameS($event)">
+                    <option value=""></option>
+                    <option *ngFor="let form of forms" value="{{form.$key}}">
+                      Nombre: <p id="{{form.$key}}_n">{{form.nombre}}</p>
+                      - Tel: <p id="{{form.$key}}">  {{form.tel}} </p> 
+                      - Domicilio: <p id="{{form.$key}}_d">{{form.domicilio}}</p>
+                    </option>
+                  </select>                             
+                  <input type="text" id="nnombre" formControlName="nombre">
+                </div> -->
                 <div class="col s1 pr0 pl0 no-print box">
                   <select name="nombre" id="nombre" style="height: 1rem !important; margin: 0 0 8px 0; border: none !important; background-color: #e4e6e5;" (change)="nameS($event)">
                     <option value=""></option>
@@ -82,7 +95,7 @@
                   Teléfono:
                 </div>
                 <div class="col s4">
-                  <input type="text" autofocus tabindex="2" class="focusNext form-control-plaintext" formControlName="tel" readonly>
+                  <input type="text" id="ttel" tabindex="2" class="focusNext" formControlName="tel" readonly>
                 </div>
               </div>
               <div class="row">
@@ -90,7 +103,7 @@
                   Domicilio:
                 </div>
                 <div class="col s11">
-                  <input type="text" tabindex="3" class="focusNext" formControlName="domicilio" readonly>                  
+                  <input type="text" id="ddomicilio" tabindex="3" class="focusNext" formControlName="domicilio" readonly>                  
                 </div>
               </div>
               <div class="row">
@@ -141,136 +154,268 @@
             <div class="col s12">
               <table class="tt1" formArrayName="units">
                 <tr>
+                  <th style="width: 0.5cm;" class="no-print"></th>
+                  <th style="width: 2.5cm;">CLAVE</th>
                   <th style="width: 2cm;">CANTIDAD</th>
                   <!-- <th style="width: 2.5cm;">NO. DE PARTE</th> -->
-                  <th style="width: 12cm;">DESCRIPCIÓN DE LA REFACCIÓN</th>
+                  <th style="width: 9cm;">DESCRIPCIÓN DE LA REFACCIÓN</th>
                   <th style="width: 3cm;">PRECIO</th>
                   <th>IMPORTE</th>
                 </tr>
                 <tr [formGroupName]="0">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="13" class="focusNext"></td>
+                  <!-- <td class="br-1" style="line-height: 0 !important;">
+                    <select class="form-control select2 select2-hidden-accessible  no-print" name="clave0" id="clave0" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">
+                        Clave: <p id="{{producto.$key}}_c">{{producto.clave}}</p>
+                        - Desc: <p id="{{producto.$key}}_d">  {{producto.descripcion}} </p> 
+                        - Precio: <p id="{{producto.$key}}_p">{{producto.precio}}</p>
+                      </option>
+                    </select> 
+                    <input type="text" id="cclave0" formControlName="clave" tabindex="13" class="focusNext">
+                  </td> -->
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c0()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" id="cclave0" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" id="ccantidad0" min="0" formControlName="cantidad" tabindex="13" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="14" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="15" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="16" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" id="ddesc0" formControlName="desc" readonly tabindex="15" class="focusNext"></td>
+                  <td class="br-1"><input type="number" id="iimporte0" formControlName="importe" readonly tabindex="16" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal0" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="1">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="17" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c1()" >
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad1" formControlName="cantidad" tabindex="17" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="18" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="19" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="20" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="19" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="20" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal1" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="2">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="21" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c2()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad2" formControlName="cantidad" tabindex="21" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="22" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="23" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="24" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="23" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="24" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal2" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="3">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="25" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c3()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad3" formControlName="cantidad" tabindex="25" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="26" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="27" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="28" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="27" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="28" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal3" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="4">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="29" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c4()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad4" formControlName="cantidad" tabindex="29" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="30" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="31" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="32" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="31" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="32" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal4" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="5">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="33" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c5()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad5" formControlName="cantidad" tabindex="33" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="34" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="35" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="36" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="35" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="36" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal5" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="6">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="37" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c6()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad6" formControlName="cantidad" tabindex="37" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="38" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="39" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="40" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="39" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="40" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal6" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="7">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="41" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c7()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad7" formControlName="cantidad" tabindex="41" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="42" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="43" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="44" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="43" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="44" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal7" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="8">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="45" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c8()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad8" formControlName="cantidad" tabindex="45" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="46" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="47" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="48" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="47" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="48" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal8" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="9">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="49" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c9()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad9" formControlName="cantidad" tabindex="49" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="50" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="51" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="52" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="51" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="52" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal9" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="10">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="53" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c10()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>            
+                  <td class="br-1"><input type="number" min="0" id="ccantidad10" formControlName="cantidad" tabindex="53" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="54" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="55" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="56" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="55" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="56" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal10" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="11">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="57" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c11()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad11" formControlName="cantidad" tabindex="57" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="58" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="59" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="60" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="59" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="60" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal11" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="12">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="61" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c12()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>              
+                  <td class="br-1"><input type="number" min="0" id="ccantidad12" formControlName="cantidad" tabindex="61" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="62" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="63" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="64" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="63" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="64" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal12" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="13">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="65" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c13()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad13" formControlName="cantidad" tabindex="65" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="66" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="67" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="68" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="67" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="68" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal13" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="14">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="69" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c14()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad14" formControlName="cantidad" tabindex="69" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="70" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="71" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="72" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="71" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="72" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal14" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="15">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="73" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c15()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad15" formControlName="cantidad" tabindex="73" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="74" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="75" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="76" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="75" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="76" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal15" formControlName="subtotal"></td>
                 </tr>
                 <tr [formGroupName]="16" style="border: 1px solid #9e9e9e;">
-                  <td class="br-1"><input type="number" min="0" formControlName="cantidad" tabindex="77" class="focusNext"></td>
+                  <td class="br-1 box no-print">
+                    <select name="" id="" formControlName="cc" (change)="c16()">
+                      <option value=""></option>
+                      <option *ngFor="let producto of productos" value="{{producto.$key}}">{{producto.clave}}</option>
+                    </select>
+                  </td>
+                  <td class="br-1"><input type="text" formControlName="clave" readonly tabindex="13" class="focusNext"></td>
+                  <td class="br-1"><input type="number" min="0" id="ccantidad16" formControlName="cantidad" tabindex="77" class="focusNext"></td>
                   <!-- <td><input type="text" formControlName="noparte" tabindex="78" class="focusNext"></td> -->
-                  <td class="br-1"><input type="text" formControlName="desc" tabindex="79" class="focusNext"></td>
-                  <td class="br-1"><input type="number" formControlName="importe" tabindex="80" class="focusNext"></td>
-                  <td><input type="text" formControlName="subtotal"></td>
+                  <td class="br-1"><input type="text" formControlName="desc" readonly tabindex="79" class="focusNext"></td>
+                  <td class="br-1"><input type="number" formControlName="importe" readonly tabindex="80" class="focusNext"></td>
+                  <td><input type="text" id="ssubtotal16" formControlName="subtotal"></td>
                 </tr>
               </table>
               <table id="total__">
                 <tr style="border-bottom: 0;">
                   <td style="width: 14cm;">
-                    <p style="text-align: left;">Al firmar de conformidad acepto a mi entera satisfacción el servicio que estoy contratando de manera profesional con Afinauto. Así, como sus términos y condiciones.</p>
+                    <p style="text-align: left;">Al firmar de conformidad acepto a mi entera satisfacción el servicio que estoy contratando de manera profesional con Rivera Mantenimiento Automotriz. Así, como sus términos y condiciones.</p>
                   </td>
                   <!-- <td style="width: 11.5cm;"></td> -->
                   <!-- <td style="background-color: #ededed; width: 3cm;" class="right-align">REFACCIONES: $</td>
@@ -372,40 +517,6 @@
           </div>
           </div>
 
-          
-          
-          <!-- <div class="foot_">
-          
-          <div class="row valign-wrapper">
-            <div class="col s5">
-              <div class="row valign-wrapper">
-                <div class="col s2" style="padding-right: 0 !important;">
-                  <img src="https://img.icons8.com/color/96/000000/facebook.png" style="height: 1cm !important;">
-                </div>
-                <div class="col s4" style="padding-left: 0 !important;">
-                  ramsa automotriz
-                </div>
-                <div class="col s2" style="padding-right: 0 !important;">
-                  <img src="https://img.icons8.com/color/96/000000/whatsapp.png" style="height: 1cm !important;">
-                </div>
-                <div class="col s4" style="padding-left: 0 !important;">
-                    443 528 1223
-                </div>
-              </div>                
-            </div>
-            <div class="col s4 center-align">
-              <p>Cel. 443 528 1223</p>
-            </div>
-            <div class="col s3 center-align">
-              <p>ramsaautomotriz7827@gmail.com</p>
-            </div>
-          </div> 
-         <div class="row">
-            <div class="col s12 center-align">
-              <b>Baja California Norte #119c Col. Issac Arriaga</b>
-            </div>
-          </div>
-          </div> -->
         </div>
       </div>
     </section>

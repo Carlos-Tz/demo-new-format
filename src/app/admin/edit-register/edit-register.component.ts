@@ -52,10 +52,10 @@ export class EditRegisterComponent implements OnInit {
   sForm() {
     this.myForm = this.fb.group({
       nombre: ['', [Validators.required]],
-      domicilio: [''],
-      tel: [''],
+      domicilio: ['', [Validators.required]],
+      tel: ['', [Validators.required]],
       fecha: [''],
-      email: ['']
+      email: ['', [Validators.required]]
     });
   }
 

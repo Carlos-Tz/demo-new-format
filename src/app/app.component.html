@@ -9,7 +9,8 @@
         <a mat-button [routerLink]="['/clientes']"><span class="material-icons">group</span> Clientes </a>
         <a mat-button [routerLink]="['/ordenes']"><span class="material-icons">feed</span> Ordenes</a>
         <a mat-button [routerLink]="['/notas']"><span class="material-icons">note</span> Notas</a>
-        <a mat-button *ngIf="this.authService.userName">{{this.authService.userName}} </a>
+        <a mat-button [routerLink]="['/productos']"><span class="material-icons">inventory</span> Productos</a>
+        <!-- <a mat-button *ngIf="this.authService.userName">{{this.authService.userName}} </a> -->
         <a mat-button *ngIf="this.authService.userName" (click)='authService.SignOut()'><span class="material-icons">power_settings_new</span></a>
         <!-- <a mat-button [routerLink]="'/activities'"> Activities </a>
         <a mat-button [routerLink]="'/create-activity'"> Create Activity </a> -->
@@ -28,6 +29,8 @@
         <a mat-list-item [routerLink]="['/clientes']"><span class="material-icons">group</span> Clientes </a>
         <a mat-list-item [routerLink]="['/ordenes']"><span class="material-icons">feed</span> Ordenes</a>
         <a mat-list-item [routerLink]="['/notas']"><span class="material-icons">note</span> Notas</a>
+        <a mat-list-item [routerLink]="['/productos']"><span class="material-icons">inventory</span> Productos</a>
+        <a mat-button *ngIf="this.authService.userName">{{this.authService.userName}} </a>
         <a mat-list-item *ngIf="this.authService.userName" (click)='authService.SignOut()'><span class="material-icons">power_settings_new</span></a>
 <!--         <a mat-list-item [routerLink]="'/activities'"> Activities </a>
         <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
